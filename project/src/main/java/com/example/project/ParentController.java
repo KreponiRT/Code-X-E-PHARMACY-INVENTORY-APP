@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 /**
  * All the UI's will be implemented in the same controller
  * @implNote if there is an issue concerning mysql connector, refer to the readme file for
- * a solution
+ * a solution.
  */
 
 
