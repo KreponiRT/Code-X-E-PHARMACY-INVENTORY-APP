@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="670.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.ParentController">
+  <tabs>
+    <Tab closable="false" text="ADD DRUGS">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="676.0">
+               <children>
+                  <VBox layoutX="14.0" layoutY="24.0">
+                     <children>
+                        <Label text="Name Of Drugs" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font></Label>
+                        <TextField fx:id="drugNameTextField" prefHeight="25.0" prefWidth="180.0" promptText="Drug name" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="253.0" layoutY="24.0">
+                     <children>
+                        <Label text="Name Of Supplier" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font></Label>
+                        <TextField fx:id="supplierNameTextField" prefHeight="25.0" prefWidth="180.0" promptText="Suppliers Name" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="16.0" layoutY="145.0">
+                     <children>
+                        <Label text="Production Date" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font></Label>
+                        <DatePicker fx:id="produtionDatePicker" promptText="Select production date" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="253.0" layoutY="145.0">
+                     <children>
+                        <Label text="Expiry Date" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font></Label>
+                        <DatePicker fx:id="expiryDatePicker" promptText="Select expiry date" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="14.0" layoutY="84.0">
+                     <children>
+                        <Label text="Price" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="priceTextField" prefHeight="25.0" prefWidth="180.0" promptText="Enter Price" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="17.0" layoutY="210.0" prefHeight="151.0" prefWidth="639.0">
+                     <children>
+                        <Label text="Description" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="descriptionTextArea" prefHeight="133.0" prefWidth="636.0" promptText="Enter drug description here" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="addDrugButton" layoutX="14.0" layoutY="387.0" mnemonicParsing="false" onAction="#addDrugButtonOnAction" prefWidth="200.0" text="ADD DRUG" />
+                  <VBox layoutX="253.0" layoutY="84.0">
+                     <children>
+                        <Label text="Quantity" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="quantityTextField" prefHeight="25.0" prefWidth="180.0" promptText="Enter Quantity" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="476.0" layoutY="24.0">
+                     <children>
+                        <Label text="Age Group" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="ageGroupChoiceBox" prefWidth="180.0" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="476.0" layoutY="84.0" prefHeight="46.0" prefWidth="180.0">
+                     <children>
+                        <Label text="Prescription" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="prescriptionTextField" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="476.0" layoutY="144.0" prefHeight="46.0" prefWidth="180.0">
+                     <children>
+                        <Label text="id" textFill="#4d4b4be8">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="idTextField" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="VIEW DRUGS">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="31.0" prefHeight="44.0" prefWidth="645.0" spacing="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <VBox prefHeight="42.0" prefWidth="401.0">
+                           <children>
+                              <Label text="Search" textFill="#686565">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="12.0" />
+                                 </font></Label>
+                              <TextField fx:id="searchDrugTextField" prefHeight="25.0" prefWidth="444.0" promptText="Enter drug name" />
+                           </children>
+                        </VBox>
+                        <Button fx:id="searchDrugButton" mnemonicParsing="false" onAction="#searchDrugButtonOnAction" prefHeight="44.0" prefWidth="179.0" text="SEARCH">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="viewDrugsTableView" layoutX="5.0" layoutY="105.0" prefHeight="340.0" prefWidth="662.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
+                    <columns>
+                      <TableColumn fx:id="idTableColumn" maxWidth="20.0" prefWidth="20.0" text="ID" />
+                      <TableColumn fx:id="nameTableColumn" maxWidth="139.0" prefWidth="139.0" text="Name" />
+                        <TableColumn fx:id="supplierTableColumn" maxWidth="133.0" prefWidth="133.0" text="Supplier" />
+                        <TableColumn fx:id="priceTableColumn" maxWidth="34.0" prefWidth="34.0" text="Price" />
+                        <TableColumn fx:id="quantityTableColumn" maxWidth="35.0" prefWidth="35.0" text="Qty" />
+                        <TableColumn fx:id="ageGroupTableColumn" maxWidth="68.0" prefWidth="68.0" text="Age Group" />
+                        <TableColumn fx:id="productionDateTableColumn" maxWidth="97.0" prefWidth="97.0" text="Production Date" />
+                        <TableColumn fx:id="expiryDateTableColumn" maxWidth="107.0" prefWidth="107.0" text="Expiry Date" />
+                    </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="ISSUE DRUGS">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
