@@ -8,7 +8,7 @@ public class Drugs {
     String drugName,supplierName,ageGroup,prescription,description;
     Date expiryDate,productionDate,supplyDate;
 
-    public Drugs( int quantity, double price, String drugName,
+    public Drugs(Integer drugId ,Integer quantity, double price, String drugName,
                  String supplierName, String ageGroup, String prescription,
                  String description, Date expiryDate, Date productionDate) {
         this.drugId = drugId;
@@ -21,7 +21,7 @@ public class Drugs {
         this.description = description;
         this.expiryDate = expiryDate;
         this.productionDate = productionDate;
-        this.supplyDate = supplyDate;
+//        this.supplyDate = supplyDate;
     }
 
     public int getDrugId() {
