@@ -24,7 +24,7 @@ public class ParentController {
   private TextField drugNameTextField,supplierNameTextField,priceTextField,
         quantityTextField,prescriptionTextField,idTextField;
   @FXML
-    private DatePicker produtionDatePicker,expiryDatePicker;
+    private DatePicker productionDatePicker,expiryDatePicker;
   @FXML
     private TextArea descriptionTextArea;
   @FXML
@@ -74,7 +74,7 @@ public class ParentController {
     double price = Double.parseDouble(priceTextField.getText());
     int quantity = Integer.parseInt(quantityTextField.getText());
     String prescription = prescriptionTextField.getText();
-    LocalDate productionDate = produtionDatePicker.getValue();
+    LocalDate productionDate = productionDatePicker.getValue();
     LocalDate expiryDate = expiryDatePicker.getValue();
     String description = descriptionTextArea.getText();
     int id = Integer.parseInt(idTextField.getText());
