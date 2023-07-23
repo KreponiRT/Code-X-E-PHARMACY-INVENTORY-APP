@@ -9,6 +9,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * All the UI's will be implemented in the same controller
@@ -52,6 +55,8 @@ public class ParentController {
   private TableColumn<Drugs,Date> productionDateTableColumn,expiryDateTableColumn;
   ObservableList<Drugs> drugsObservableList = FXCollections.observableArrayList();
 
+  Stack stack = new Stack<>();
+
 
 //  Other tabs
 
@@ -86,49 +91,50 @@ public class ParentController {
     String fetchQuery = "select * from drugs_table";
     Statement statement = connectDB.createStatement();
     ResultSet resultSet1 = statement.executeQuery(fetchQuery);
-
-
-    while (resultSet1.next()) {
+      while (resultSet1.next()) {
 //      if the drug name or the drug id user inputs matches
 //      in the database, then we will update else we will add
-      if (resultSet1.getInt("id")==id || resultSet1.getString("drug_name").equals(drugName)) {
+        if (resultSet1.getInt("id")==id || resultSet1.getString("drug_name").equals(drugName)) {
 //      drug id or name match
-        String updateQuery = "UPDATE drugs_table set supplier_name = '"+supplierName+"'," +
-                " age_group = '"+ageGroup+"'," +
-                "price = "+price+",quantity = "+quantity+"," +
-                "prescription = '"+prescription+"', production_date='"+productionDate+"'," +
-                "expiry_date = '"+expiryDate+"',supply_date = curdate()," +
-                "description = '"+description+"' WHERE id="+id+" and drug_name = '"+drugName+"'";
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"The drug exist in the store, Do you want to update?",
-                ButtonType.YES,ButtonType.NO);
-        ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
-        if (ButtonType.YES.equals(result)){
+          String updateQuery = "UPDATE drugs_table set supplier_name = '"+supplierName+"'," +
+                  " age_group = '"+ageGroup+"'," +
+                  "price = "+price+",quantity = "+quantity+"," +
+                  "prescription = '"+prescription+"', production_date='"+productionDate+"'," +
+                  "expiry_date = '"+expiryDate+"',supply_date = curdate()," +
+                  "description = '"+description+"' WHERE id="+id+" and drug_name = '"+drugName+"'";
+          Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"The drug exist in the store, Do you want to update?",
+                  ButtonType.YES,ButtonType.NO);
+          ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
+          if (ButtonType.YES.equals(result)){
+            try {
+              Statement statement1 = connectDB.createStatement();
+              statement1.executeUpdate(updateQuery);
+            }catch (Exception e){
+              System.out.println("Update Successful");
+            }
+          }
+        } else {
+//        drug id or name mismatch
+          String addQuery = "insert  drugs_table  values ("+id+",'"+drugName+"','"+supplierName+"','"+
+                  ageGroup +"',"+price+","+quantity+",'"+prescription+"','"+productionDate+"','"+
+                  expiryDate+"',"+"curdate()"+",'"+description+"')";
+          Alert alert = new Alert(Alert.AlertType.INFORMATION,"Drugs have been added successfully",
+                  ButtonType.OK);
+          ButtonType result = alert.showAndWait().orElse(ButtonType.OK);
           try {
             Statement statement1 = connectDB.createStatement();
-            statement1.executeUpdate(updateQuery);
+            statement1.executeUpdate(addQuery);
+            System.out.println("done");
           }catch (Exception e){
-            System.out.println("Update Successful");
+            System.out.println("Added successfully");
           }
         }
-      } else {
-//        drug id or name mismatch
-        String addQuery = "insert  drugs_table  values ("+id+",'"+drugName+"','"+supplierName+"','"+
-                ageGroup +"',"+price+","+quantity+",'"+prescription+"','"+productionDate+"','"+
-                expiryDate+"',"+"curdate()"+",'"+description+"')";
-        Alert alert = new Alert(Alert.AlertType.INFORMATION,"Drugs have been added successfully",
-                ButtonType.OK);
-        ButtonType result = alert.showAndWait().orElse(ButtonType.OK);
-        try {
-          Statement statement1 = connectDB.createStatement();
-          statement1.executeUpdate(addQuery);
-          System.out.println("done");
-        }catch (Exception e){
-          System.out.println("Added successfully");
-        }
+        break;
       }
-      break;
-    }
+
   }
+
+
 
 //  End of add goods implementation
 
@@ -168,6 +174,7 @@ public class ParentController {
         Date prod = resultSet.getDate("production_date");
         String pres = resultSet.getString("prescription");
         String des = resultSet.getString("description");
+
 
         drugsObservableList.add(new Drugs(id,quantity,price,name,supplier,ageGroup ,pres,des,exp,prod));
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("drugId"));
@@ -225,6 +232,7 @@ public class ParentController {
         productionDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("productionDate"));
         expiryDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("expiryDate"));
         viewDrugsTableView.setItems(drugsObservableList);
+
       }
     }catch (Exception e){
       System.out.println("Populating");
