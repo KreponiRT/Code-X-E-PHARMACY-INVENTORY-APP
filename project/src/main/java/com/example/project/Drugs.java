@@ -2,12 +2,27 @@ package com.example.project;
 
 import java.sql.Date;
 
+/**
+ *
+ */
 public class Drugs {
     int drugId,quantity;
     double price;
     String drugName,supplierName,ageGroup,prescription,description;
     Date expiryDate,productionDate,supplyDate;
 
+    /**
+     * @param drugId
+     * @param quantity
+     * @param price
+     * @param drugName
+     * @param supplierName
+     * @param ageGroup
+     * @param prescription
+     * @param description
+     * @param expiryDate
+     * @param productionDate
+     */
     public Drugs(Integer drugId ,Integer quantity, double price, String drugName,
                  String supplierName, String ageGroup, String prescription,
                  String description, Date expiryDate, Date productionDate) {

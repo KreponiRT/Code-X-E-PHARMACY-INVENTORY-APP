@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputEvent;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -71,6 +72,11 @@ public class ParentController {
    */
   DatabaseConnection connectNow = new DatabaseConnection();
   Connection connectDB = connectNow.getConnection();
+
+  /**
+   * @param event
+   * @throws SQLException
+   */
   @FXML
   private void addDrugButtonOnAction(ActionEvent event) throws SQLException {
     String drugName = drugNameTextField.getText();
@@ -151,12 +157,27 @@ public class ParentController {
     if (key.isBlank()){
       viewDrugsTableView.getItems().clear();
       populate();
+//      searchDrugTextField.setText("");
     }else {
       viewDrugsTableView.getItems().clear();
       populatePartial(key);
+//      searchDrugTextField.setText("");
     }
   }
 
+  /**
+   * @param event
+   */
+  @FXML
+  private void keyboardInputOnAction(InputEvent event){
+    String key = searchDrugTextField.getText();
+    viewDrugsTableView.getItems().clear();
+    populatePartial(key);
+  }
+
+  /**
+   * @param key
+   */
   private void populatePartial(String key) {
     int numberkey = Integer.parseInt(key);
     try {
@@ -194,6 +215,9 @@ public class ParentController {
     }
   }
 
+  /**
+   *
+   */
   @FXML
   private void initialize() {
     ageGroupChoiceBox.getItems().addAll(ageGroupChoices);
@@ -205,6 +229,9 @@ public class ParentController {
 
 //  End of implementation
 
+  /**
+   *
+   */
   private void populate() {
     try {
       String query = "select * from drugs_table";

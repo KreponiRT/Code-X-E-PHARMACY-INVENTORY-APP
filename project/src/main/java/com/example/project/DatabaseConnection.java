@@ -3,9 +3,18 @@ package com.example.project;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ *
+ */
 public class DatabaseConnection {
+    /**
+     *
+     */
     public Connection databaseLink;
 
+    /**
+     * @return
+     */
     public Connection getConnection(){
         String databaseName = "henry";
         String databaseUser = "root";
