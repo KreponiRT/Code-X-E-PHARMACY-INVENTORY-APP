@@ -9,3 +9,10 @@ Henry is the Database admi
 Bless is the UI/UX designer
 
 Kreponi is the ProJect manager
+
+## Student IDs
+- 10900095
+- 10922451
+- 10921589
+- 10888516
+- 10864768
